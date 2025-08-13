@@ -51,9 +51,17 @@ python validate_test.py https://raw.githubusercontent.com/OpenBanking-Brasil/ope
    ```
 
 2. Execute o container (montando o diretório de cenários):
+   
+   linux
    ```sh
     docker run --rm -v "$PWD":/app validate-test "https://raw.githubusercontent.com/OpenBanking-Brasil/openapi/main/swagger-apis/credit-portability/1.0.0-rc.1.yml"
    ```
+
+   windows
+   ```sh
+   docker run --rm -v ${PWD}:/app validate-test "https://raw.githubusercontent.com/OpenBanking-Brasil/openapi/main/swagger-apis/credit-portability/1.0.0-rc.1.yml"
+   ```
+
 
 ## Saídas
 
