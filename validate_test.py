@@ -159,29 +159,26 @@ def get_all_json_files(directory):
         if f.endswith(".json") and os.path.isfile(os.path.join(directory, f))
     ]
 
-def get_openapi_from_url(url):
-    """Obtém o OpenAPI de uma URL e retorna como um dicionário."""
-    response = requests.get(url)
-    if response.status_code == 200:
-        body = response.text
-        raw_spec = yaml.safe_load(body)
-        openapi = jsonref.JsonRef.replace_refs(raw_spec)
-        return openapi
-    else:
-        raise Exception(f"Erro ao buscar OpenAPI: {response.status_code}")
+def get_openapi_from_file(pathOpenApi):
+   with open(pathOpenApi, "r", encoding="utf-8") as f:
+
+            raw_spec = yaml.safe_load(f)
+            openapi = jsonref.JsonRef.replace_refs(raw_spec)
+            return openapi
+        
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python validate_test.py <url_raw_no_formato_yml>")
+        print("Uso: python validate_test.py <path_to_openapi_file>")
         sys.exit(1)
 
     scenarios_path = "cenarios"
-    url_openApi = sys.argv[1]
+    path_openApi = sys.argv[1]
     print(f"Validando arquivos no diretório: {scenarios_path}")     
     cenariosFiles = get_all_json_files(scenarios_path)
     
-    print(f"Obtendo OpenAPI de: {url_openApi}")
-    obj_api_openapi = get_openapi_from_url(url_openApi)
+    print(f"Obtendo OpenAPI de: {path_openApi}")
+    obj_api_openapi = get_openapi_from_file(path_openApi)
     
     outputResult = []
     for file in cenariosFiles:

@@ -37,7 +37,7 @@ O script `validate_test.py` tem como objetivo validar os payloads JWT presentes 
 ### Via Python
 
 ```sh
-python validate_test.py https://raw.githubusercontent.com/OpenBanking-Brasil/openapi/main/swagger-apis/credit-portability/1.0.0-rc.1.yml
+python validate_test.py 1.0.0.yml
 ```
 
 - **cenarios**: diretório contendo os arquivos de teste (.json)
@@ -54,12 +54,12 @@ python validate_test.py https://raw.githubusercontent.com/OpenBanking-Brasil/ope
    
    linux
    ```sh
-    docker run --rm -v "$PWD":/app validate-test "https://raw.githubusercontent.com/OpenBanking-Brasil/openapi/main/swagger-apis/credit-portability/1.0.0-rc.1.yml"
+    docker run --rm -v "$PWD":/app validate-test "1.0.0.yml"
    ```
 
    windows
    ```sh
-   docker run --rm -v ${PWD}:/app validate-test "https://raw.githubusercontent.com/OpenBanking-Brasil/openapi/main/swagger-apis/credit-portability/1.0.0-rc.1.yml"
+   docker run --rm -v ${PWD}:/app validate-test "1.0.0.yml"
    ```
 
 
